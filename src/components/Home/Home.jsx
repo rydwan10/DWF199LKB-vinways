@@ -1,8 +1,35 @@
+import { Container, Grid } from '@material-ui/core';
+
+// importing needed components
+import Carousel from './Carousel/Carousel'
+import CardList from './CardList/CardList'
+import MusicPlayer from '../MusicPlayer/MusicPlayer'
+
+// style
+import makeStyles from './style'
 function Home() {
+
+    const classes = makeStyles();
+
     return (
-        <div>
-            this is home
+        <div className={classes.mainContainer}>
+            <Container maxWidth="lg">
+                <Grid container spacing={3}>
+                    <Grid item xs={12} sm={12} md={12}>
+                        <Carousel />
+                    </Grid>
+                    <Grid container justify="center" alignItems="stretch" spacing={3} item lg={12} md={12}>
+                        <CardList />
+                    </Grid>
+                    <Grid container>
+                        <Grid item style={{ width: '100%' }}>
+                            <MusicPlayer />
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Container>
         </div>
+
     )
 }
 
