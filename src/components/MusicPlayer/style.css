@@ -1,0 +1,15 @@
+.rhap_time {
+    color: #03F387
+}
+
+.rhap_container {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+}
+
+.rhap_progress-filled {
+    background-color: #03F387;
+}
