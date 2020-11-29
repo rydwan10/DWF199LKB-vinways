@@ -9,7 +9,8 @@ const initialState = {
     isLogin: false,
     users: [
         { id: 1, email: 'admin@test.com', password: '123456', isAdmin: true },
-        { id: 2, email: 'user@test.com', password: '123456', isMember: true },
+        { id: 2, email: 'member@test.com', password: '123456', isMember: true },
+        { id: 3, email: 'notmember@test.com', password: '123456', isMember: false },
     ],
     currentUser: {},
     isModalOpen: false,

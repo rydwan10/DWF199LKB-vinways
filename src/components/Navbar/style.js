@@ -10,4 +10,8 @@ export default makeStyles((theme) => ({
         width: theme.spacing(5),
         height: theme.spacing(5),
     },
+    link: {
+        textDecoration: 'none',
+        fontFamily: 'Nunito',
+    }
 }))

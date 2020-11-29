@@ -36,8 +36,8 @@ export default function Row(props) {
                 <TableCell className={classes.tableCell} align="right">{row.users}</TableCell>
                 <TableCell className={classes.tableCell} align="right">{row.buktiTransfer}</TableCell>
                 <TableCell className={classes.tableCell} align="right">{row.remainingActive}</TableCell>
-                <TableCell className={classes.tableCell} align="right">{row.statusUser}</TableCell>
-                <TableCell className={classes.tableCell} align="right">{row.statusPayment}</TableCell>
+                <TableCell className={`${classes.tableCell} ${row.statusUser == 'Active' ? classes.greenText : classes.redText} `} align="right">{row.statusUser}</TableCell>
+                <TableCell className={`${classes.tableCell} ${row.statusPayment == 'Approved' ? classes.greenText : row.statusPayment == 'Pending' ? classes.yellowText : classes.redText} `} align="right">{row.statusPayment}</TableCell>
                 <TableCell className={classes.tableCell} align="right">
                     <MoreHorizOutlined style={{ cursor: 'pointer' }} onClick={handleClick} />
                     <Menu

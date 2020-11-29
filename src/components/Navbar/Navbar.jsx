@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { Container, Grid, Avatar } from '@material-ui/core';
+import { Container, Grid, Avatar, Menu } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles'
 
 import { AppContext } from '../../context/appContext';
@@ -15,17 +15,32 @@ import addartist from '../../assets/icons/addartist.svg'
 import logout from '../../assets/icons/logout.svg'
 import pay from '../../assets/icons/pay.svg'
 
-// Menu Dropdown
-// import Menu from '@material-ui/core/Menu';
-
-import { StyledMenu } from './Dropdown/Dropdown'
 import MenuItem from '@material-ui/core/MenuItem';
 
 import makeStyles from './style';
 
 function Navbar() {
 
-    const router = useHistory();
+    const StyledMenu = withStyles({
+        paper: {
+            backgroundColor: '#363954'
+        },
+    })((props) => (
+        <Menu
+            elevation={0}
+            getContentAnchorEl={null}
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+            }}
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: 'center',
+            }}
+            {...props}
+        />
+    ));
+
 
     const classes = makeStyles();
 
@@ -43,6 +58,7 @@ function Navbar() {
     };
 
     const handleLogout = () => {
+        setAnchorEl(null);
         dispatch({ type: LOGOUT })
     }
 
@@ -65,18 +81,30 @@ function Navbar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem
-                    style={{ color: '#ffffff', fontFamily: 'Nunito' }}
-                    onClick={handleClose}>
-                    <img style={{ marginRight: '12px' }} src={addmusic} alt="icon" width="25px" />
-                    Add Music
-                </MenuItem>
-                <MenuItem
-                    style={{ color: '#ffffff', fontFamily: 'Nunito' }}
-                    onClick={handleClose}>
-                    <img style={{ marginRight: '12px' }} src={addartist} alt="icon" width="25px" />
-                    Add Artist
-                </MenuItem>
+                <Link className={classes.link} to="/add-music">
+                    <MenuItem
+                        style={{ color: '#ffffff', fontFamily: 'Nunito' }}
+                        onClick={handleClose}>
+                        <img style={{ marginRight: '12px' }} src={addmusic} alt="icon" width="25px" />
+                        Add Music
+                    </MenuItem>
+                </Link>
+                <Link className={classes.link} to="/add-artist">
+                    <MenuItem
+                        style={{ color: '#ffffff', fontFamily: 'Nunito' }}
+                        onClick={handleClose}>
+                        <img style={{ marginRight: '12px' }} src={addartist} alt="icon" width="25px" />
+                        Add Artist
+                    </MenuItem>
+                </Link>
+                <Link className={classes.link} to="/transactions">
+                    <MenuItem
+                        style={{ color: '#ffffff', fontFamily: 'Nunito' }}
+                        onClick={handleClose}>
+                        <img style={{ marginRight: '12px' }} src={pay} alt="icon" width="25px" />
+                        Transactions
+                    </MenuItem>
+                </Link>
                 <MenuItem
                     style={{ color: '#ffffff', fontFamily: 'Nunito' }}
                     onClick={handleLogout}>
@@ -92,12 +120,17 @@ function Navbar() {
                         onClose={handleClose}
                     >
                         {
-                            state.currentUser.isMember ? (<></>) : (<MenuItem
-                                style={{ color: '#ffffff', fontFamily: 'Nunito' }}
-                                onClick={handleClose}>
-                                <img style={{ marginRight: '12px' }} src={pay} alt="icon" width="25px" />
-                            Pay
-                            </MenuItem>)
+                            state.currentUser.isMember ? (<div></div>) : (
+                                <Link className={classes.link} to="/pay">
+                                    <MenuItem
+                                        style={{ color: '#ffffff', fontFamily: 'Nunito' }}
+                                        onClick={handleClose}>
+                                        <img style={{ marginRight: '12px' }} src={pay} alt="icon" width="25px" />
+                                        Pay
+                                    </MenuItem>
+                                </Link>
+
+                            )
                         }
                         <MenuItem
                             style={{ color: '#ffffff', fontFamily: 'Nunito' }}
@@ -109,7 +142,7 @@ function Navbar() {
                 )}
 
         </nav>
-    ) : (<></>)
+    ) : (<div></div>)
 }
 
 export default Navbar

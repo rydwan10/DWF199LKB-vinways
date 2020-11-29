@@ -20,5 +20,16 @@ export default makeStyles((theme) => ({
     menuItem: {
         fontWeight: 'bold',
         fontFamily: 'Nunito'
+    },
+
+
+    greenText: {
+        color: "#08F387",
+    },
+    redText: {
+        color: 'red',
+    },
+    yellowText: {
+        color: 'yellow',
     }
 }))

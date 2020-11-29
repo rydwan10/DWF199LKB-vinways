@@ -8,5 +8,9 @@ export default makeStyles((theme) => ({
         backgroundColor: '#00031F',
         // backgroundImage: `url(${bgVector2x})`,
         backgroundRepeat: 'no-repeat'
+    },
+    title: {
+        padding: '24px 0',
+        color: '#08F387'
     }
 }))

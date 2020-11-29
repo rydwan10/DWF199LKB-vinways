@@ -23,14 +23,13 @@ function Form() {
         if (input.email.trim() === '' || input.password.trim() === '') {
             dispatch({ type: SET_MODAL, payload: { isOpen: true, message: 'Email or password must not Empty!' } })
         } else {
-            // state.users.map(user => )
-            // dispatch({ type: LOGIN, payload: {data: input, isOpen: true, message: 'Login Success!'} });
-            // router.push('/');
             const authenticatedUser = state.users.find(user => user.email === input.email && user.password === input.password);
-            // console.log(authenticatedUser);
-            // dispatch
-            dispatch({ type: LOGIN, payload: { isLogin: true, currentUser: authenticatedUser } });
-            router.push('/');
+            if (authenticatedUser) {
+                dispatch({ type: LOGIN, payload: { isLogin: true, currentUser: authenticatedUser } });
+                router.push('/');
+            } else {
+                dispatch({ type: SET_MODAL, payload: { isOpen: true, message: 'Email or password is invalid' } })
+            }
         }
     }
 
