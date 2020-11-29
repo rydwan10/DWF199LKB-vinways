@@ -5,10 +5,9 @@ import { Container, Grid } from '@material-ui/core';
 import Hero from './Hero/Hero';
 import Form from './Form/Form';
 import Navbar from './Navbar/Navbar';
-
 // style
 import makeStyles from './style'
-function LoginPage() {
+function Login() {
 
     const classes = makeStyles();
 
@@ -25,9 +24,10 @@ function LoginPage() {
                     </Grid>
                 </Grid>
             </Container>
+
         </div>
 
     )
 }
 
-export default LoginPage
+export default Login

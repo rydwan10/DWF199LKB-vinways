@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Typography, Button } from '@material-ui/core'
 
-import heroIcon from '../../../assets/heroIcon.svg';
+import heroIcon from '../../../assets/heroIcon.svg'
 
 import makeStyles from './style'
 function Hero() {
@@ -24,7 +25,11 @@ function Hero() {
             <span className={classes.tinyHero}>
                 <p>pay and access milions of songs</p>
             </span>
-            <Button size="medium" variant="contained" className={classes.registerButton}>Login</Button>
+            <Link className={classes.link} to="/register">
+                <Button size="medium" variant="contained" className={classes.registerButton}>
+                    Register
+                </Button>
+            </Link>
         </>
     )
 }

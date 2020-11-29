@@ -8,7 +8,7 @@ import Navbar from './Navbar/Navbar';
 
 // style
 import makeStyles from './style'
-function RegisterPage() {
+function Register() {
 
     const classes = makeStyles();
 
@@ -30,4 +30,4 @@ function RegisterPage() {
     )
 }
 
-export default RegisterPage
+export default Register
