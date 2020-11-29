@@ -47,6 +47,7 @@ function Form() {
                     </Grid>
                     <Grid style={{ width: '80%' }} item>
                         <TextField
+                            type="email"
                             onChange={(e) => setInput({ ...input, email: e.target.value })}
                             style={{ width: '100%' }}
                             label="Email" />

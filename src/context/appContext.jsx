@@ -3,6 +3,10 @@ import { createContext, useReducer } from 'react';
 // App Reducer
 import { reducer } from '../reducers/AppReducer'
 
+// music
+import kingslayer from '../assets/musics/kingslayer.mp3'
+import deardiary from '../assets/musics/deardiary.mp3'
+
 export const AppContext = createContext();
 
 const initialState = {
@@ -14,7 +18,11 @@ const initialState = {
     ],
     currentUser: {},
     isModalOpen: false,
-    modalMessage: null
+    modalMessage: null,
+    playlist: [
+        // { id: 1, name: 'kingslayer', src: kingslayer },
+        // { id: 2, name: 'deardiary', src: deardiary },
+    ]
 }
 
 export const AppContextProvider = (props) => {

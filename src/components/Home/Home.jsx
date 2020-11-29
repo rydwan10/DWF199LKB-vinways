@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import { AppContext } from '../../context/appContext';
+
 import { Container, Grid } from '@material-ui/core';
 
 // importing needed components
@@ -8,7 +11,7 @@ import MusicPlayer from '../MusicPlayer/MusicPlayer'
 // style
 import makeStyles from './style'
 function Home() {
-
+    const [state, dispatch] = useContext(AppContext);
     const classes = makeStyles();
 
     return (
@@ -23,7 +26,7 @@ function Home() {
                     </Grid>
                     <Grid container>
                         <Grid item style={{ width: '100%' }}>
-                            <MusicPlayer />
+                            {state.playlist.length > 0 ? (<MusicPlayer />) : (<div></div>)}
                         </Grid>
                     </Grid>
                 </Grid>
