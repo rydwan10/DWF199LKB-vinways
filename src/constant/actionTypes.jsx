@@ -1,5 +1,9 @@
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
-export const SET_MODAL = "SET_MODAL"
-export const REGISTER = "REGISTER"
-export const ADD_TO_PLAYLIST = "ADD_TO_PLAYLIST"
+export const SET_MODAL = "SET_MODAL";
+export const REGISTER = "REGISTER";
+export const ADD_TO_PLAYLIST = "ADD_TO_PLAYLIST";
+export const USER_LOADED = "USER_LOADED";
+export const AUTH_ERROR = "AUTH_ERROR";
+export const SET_ALL_TRANSACTIONS = "SET_ALL_TRANSACTIONS";
+export const SET_LOADING = "SET_LOADING";

@@ -3,7 +3,7 @@ import { AppContext } from "../../context/appContext";
 
 import { Route, Redirect } from "react-router-dom";
 
-const NotMemberRoute = ({ component: Component, ...rest }) => {
+const PreventToLoginRoute = ({ component: Component, ...rest }) => {
   // eslint-disable-next-line
   const [state, dispatch] = useContext(AppContext);
 
@@ -11,14 +11,10 @@ const NotMemberRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        !state.currentUser.isMember && state.isLogin ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to="login" />
-        )
+        state.isLogin ? <Redirect to="/" /> : <Component {...props} />
       }
     />
   );
 };
 
-export default NotMemberRoute;
+export default PreventToLoginRoute;

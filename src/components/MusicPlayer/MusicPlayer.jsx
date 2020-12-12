@@ -1,47 +1,35 @@
-import { useState, useContext } from 'react';
-import { AppContext } from '../../context/appContext';
+import ReactJkMusicPlayer from "react-jinke-music-player";
+import "react-jinke-music-player/assets/index.css";
 
-import AudioPlayer from 'react-h5-audio-player';
-import 'react-h5-audio-player/lib/styles.css';
+function MusicPlayer({ playlist, setPlayIndex, playIndex }) {
+  const queue = playlist.map((music) => ({
+    name: music.title,
+    musicSrc: music.src,
+  }));
 
-
-import './style.css'
-
-function MusicPlayer() {
-    const [state, dispatch] = useContext(AppContext);
-    const [currentMusicIndex, setCurrentMusicIndex] = useState(0);
-
-    const handleClickPrevious = () => {
-        setCurrentMusicIndex(prevState => prevState === 0 ? state.playlist.length - 1 : prevState - 1);
-    }
-
-    const handleClickNext = () => {
-        setCurrentMusicIndex(prevState => prevState < state.playlist.length - 1 ? prevState + 1 : 0)
-    }
-
-    const handleEnd = () => {
-        setCurrentMusicIndex(prevState => prevState === 0 ? state.playlist.length - 1 : prevState - 1);
-    }
-
-    return (
-        <>
-            <AudioPlayer
-                style={{ backgroundColor: '#363954', color: '#03F387' }}
-                layout="horizontal"
-                // loop={true}
-                handleLoop={true}
-                onEnded={handleEnd}
-                autoPlayAfterSrcChange={true}
-                showSkipControls={true}
-                showJumpControls={false}
-                src={state.playlist[currentMusicIndex].src}
-                onClickPrevious={handleClickPrevious}
-                onClickNext={handleClickNext}
-                onPlay={e => console.log("onPlay")}
-            // other props here
-            />
-        </>
-    )
+  return (
+    <div>
+      <ReactJkMusicPlayer
+        mode="full"
+        audioLists={queue}
+        defaultPlayIndex={0}
+        autoPlay={false}
+        showDownload={false}
+        showThemeSwitch={false}
+        toggleMode={false}
+        responsive={true}
+        glassBg={true}
+        playIndex={playIndex}
+        onAudioPlay={(audioInfo) => {
+          if (playIndex === audioInfo.playIndex) {
+            return;
+          }
+          setPlayIndex(audioInfo.playIndex);
+        }}
+      />
+      ,
+    </div>
+  );
 }
 
-export default MusicPlayer
+export default MusicPlayer;
